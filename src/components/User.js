@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './User.css';
+
 function User({userData}) {
     const {first, last} = userData.name;
     const {street: {name: streetName}, street: {number: streetNumber}, city, country} = userData.location;
@@ -14,18 +16,24 @@ function User({userData}) {
     }
 
     return (
-        <div>
-            <div>
+        <div className="user-card">
+            <div className="avatar-section">
                 <div className="profile-picture">
                     <img src={userData.picture.thumbnail} alt={`${first} profile`} />
                 </div>
                 <div>
-                    <p>{showName()}</p>
-                    <p>{userData.email}</p>
+                    <p className="profile-name">{showName()}</p>
+                    <p className="profile-email">{userData.email}</p>
                 </div>
             </div>
-            <p>{showAddress()}</p>
-            <p>{registrationDate()}</p>
+            <div className="data-row">
+                <p className="field-name">Address</p>
+                <p className="field-value">{showAddress()}</p>
+            </div>
+            <div className="data-row">
+                <p className="field-name">Registered</p>
+                <p className="field-value">{registrationDate()}</p>
+            </div>
         </div>
     );
 }

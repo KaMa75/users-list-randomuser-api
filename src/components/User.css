@@ -1,0 +1,44 @@
+.user-card {
+    width: 360px;
+    margin-bottom: 48px;
+}
+
+.avatar-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 48px;
+    height: 48px;
+    margin-right: 24px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.profile-name {
+    font-size: 18px;
+}
+
+.profile-email {
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.data-row {
+    padding-top: 12px;
+}
+
+.field-name {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+a, a:hover, a:active {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}

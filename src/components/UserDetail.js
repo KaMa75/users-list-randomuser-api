@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useParams, Link} from 'react-router-dom';
 
 import User from './User';
+import './UserDetails.css';
 
 function UserDetails({getUserData}) {
     const {id: index} = useParams();
@@ -21,18 +22,18 @@ function UserDetails({getUserData}) {
         if(isLoaded) {
             return (
                 <div>
-                    {userData ? <User userData={userData} /> : 'Brak danych'}
+                    {userData ? <User userData={userData} /> : <h3 style={{marginBottom: 48}}>Brak danych</h3>}
                     <div>
-                        <Link to="/users">Back to list</Link>
+                        <Link to="/users">&lArr; Back to list</Link>
                     </div>
                 </div>
             );
         }
-        return 'Trwa ładowanie danych ...';
+        return <h3>Trwa ładowanie danych ...</h3>;
     }
 
     return (
-        <div>
+        <div className="user-details">
             {renderUserDetails()}
         </div>
     );

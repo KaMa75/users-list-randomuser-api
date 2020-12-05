@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-rout
 import User from './User';
 import UserDetails from './UserDetail';
 
+import './UsersList.css';
+
 const API_URL = 'https://randomuser.me/api/';
 const USERS_LIMIT = '10';
 
@@ -46,27 +48,29 @@ function UsersList() {
         if(isLoaded) {
             return generateUsers();
         }
-        return 'Trwa ładowanie danych ...';
+        return <h3>Trwa ładowanie danych ...</h3>;
     }
 
     return (
-        <Router>
-            <Switch>
-                <Route path="/users/:id">
-                    <div>
-                        <UserDetails getUserData={getUserData} />
-                    </div>
-                </Route>
-                <Route path="/users">
-                    <div>
-                        {renderUsersList()}
-                    </div>
-                </Route>
-                <Route path="/">
-                    <Redirect to="/users" />
-                </Route>
-            </Switch>
-        </Router>
+        <div className="page-wrapper">
+            <Router>
+                <Switch>
+                    <Route path="/users/:id">
+                        <div>
+                            <UserDetails getUserData={getUserData} />
+                        </div>
+                    </Route>
+                    <Route path="/users">
+                        <div>
+                            {renderUsersList()}
+                        </div>
+                    </Route>
+                    <Route path="/">
+                        <Redirect to="/users" />
+                    </Route>
+                </Switch>
+            </Router>
+        </div>
     );
 }
 
