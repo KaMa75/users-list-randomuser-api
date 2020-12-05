@@ -6,7 +6,6 @@ import './UserDetails.css';
 
 function UserDetails({getUserData}) {
     const {id: index} = useParams();
-    console.log(getUserData(index));
     const [userData, setUserData] = useState({});
     const [isLoaded, setLoaded] = useState(false);
 

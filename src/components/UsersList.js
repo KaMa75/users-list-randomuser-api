@@ -13,6 +13,7 @@ function UsersList() {
 
     const [users, setUsers] = useState([]);
     const [isLoaded, setLoaded] = useState(false);
+    const [isError, setError] = useState(false);
 
     const getUsers = () => {
         fetch(`${API_URL}?results=${USERS_LIMIT}`)
@@ -26,6 +27,8 @@ function UsersList() {
             })
             .catch(error => {
                 console.log(error);
+                setLoaded(true);
+                setError(true);
             });
     }
 
@@ -46,7 +49,7 @@ function UsersList() {
 
     const renderUsersList = () => {
         if(isLoaded) {
-            return generateUsers();
+            return !isError ? generateUsers() : <h3>Wystąpił błąd. Spróbuj ponownie później.</h3>;
         }
         return <h3>Trwa ładowanie danych ...</h3>;
     }
