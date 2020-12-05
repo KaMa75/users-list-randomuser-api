@@ -13,14 +13,8 @@ function User({userData}) {
         return `${weekDays[date.getDay()]}, ${day} ${months[date.getMonth()]} ${year}`;
     }
 
-    const handleOnClick = () => {
-        console.log('clisk');
-    }
-
     return (
-        <div
-            onClick={handleOnClick}
-        >
+        <div>
             <div>
                 <div className="profile-picture">
                     <img src={userData.picture.thumbnail} alt={`${first} profile`} />

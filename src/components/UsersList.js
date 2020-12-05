@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import {BrowserRouter as Router, Switch, Route, Redirect, Link} from 'react-router-dom';
 
 import User from './User';
+import UserDetails from './UserDetail';
 
 const API_URL = 'https://randomuser.me/api/';
 const USERS_LIMIT = '10';
@@ -29,7 +31,16 @@ function UsersList() {
         getUsers();
     }, []);
 
-    const generateUsers = () => users.map(user => <User key={user.login.uuid} userData={user} />);
+    const generateUsers = () => users.map((user, index) => {
+        const linkUrl = `/users/${index}`;
+        return (
+            <Link to={linkUrl} key={user.login.uuid}>
+                <User userData={user} />
+            </Link>
+        );
+    });
+
+    const getUserData = index => users[index];
 
     const renderUsersList = () => {
         if(isLoaded) {
@@ -39,9 +50,23 @@ function UsersList() {
     }
 
     return (
-        <div>
-            {renderUsersList()}
-        </div>
+        <Router>
+            <Switch>
+                <Route path="/users/:id">
+                    <div>
+                        <UserDetails getUserData={getUserData} />
+                    </div>
+                </Route>
+                <Route path="/users">
+                    <div>
+                        {renderUsersList()}
+                    </div>
+                </Route>
+                <Route path="/">
+                    <Redirect to="/users" />
+                </Route>
+            </Switch>
+        </Router>
     );
 }
 
