@@ -37,7 +37,7 @@ function UserDetails({getUserData}) {
             <div className="user-details">
                 {renderUserDetails()}
             </div>
-            <Map />
+            {(isLoaded && userData) && <Map coordinates={userData.location.coordinates} name={userData.name} />}
         </>
     );
 }
