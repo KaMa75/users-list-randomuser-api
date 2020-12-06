@@ -33,9 +33,12 @@ function UserDetails({getUserData}) {
     }
 
     return (
-        <div className="user-details">
-            {renderUserDetails()}
-        </div>
+        <>
+            <div className="user-details">
+                {renderUserDetails()}
+            </div>
+            <Map />
+        </>
     );
 }
 
