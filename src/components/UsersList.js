@@ -18,8 +18,10 @@ function UsersList() {
     const getUsers = () => {
         fetch(`${API_URL}?results=${USERS_LIMIT}`)
             .then(response => {
-                console.log(response.status);
-                return response.json();
+                if(response.status == 200) {
+                    return response.json();
+                };
+                throw new Error('Wystąpił błąd');
             })
             .then(data => {
                 setUsers(data.results);

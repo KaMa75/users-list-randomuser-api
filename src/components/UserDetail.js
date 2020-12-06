@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useParams, Link} from 'react-router-dom';
 
 import User from './User';
+import Map from './Map';
 import './UserDetails.css';
 
 function UserDetails({getUserData}) {
@@ -21,10 +22,10 @@ function UserDetails({getUserData}) {
         if(isLoaded) {
             return (
                 <div>
-                    {userData ? <User userData={userData} /> : <h3 style={{marginBottom: 48}}>Brak danych</h3>}
-                    <div>
+                    <div style={{marginBottom: 24}}>
                         <Link to="/users">&lArr; Back to list</Link>
                     </div>
+                    {userData ? <User userData={userData} /> : <h3>Brak danych</h3>}
                 </div>
             );
         }
